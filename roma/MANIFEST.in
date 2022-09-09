@@ -1,0 +1,10 @@
+include README.md
+include roma/art/resources/*.ico
+
+recursive-include roma/console/console *.py
+
+# The lines below are unnecessary for now
+global-exclude mascot.py
+recursive-exclude */*/build *
+
+
