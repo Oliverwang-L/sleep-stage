@@ -61,10 +61,9 @@ def model():
    m.mu.Conv1D(filters=64,kernel_size=6,use_batchnorm=th.use_batchnorm,
                activation=th.activation,dilation_rate=5),
    m.mu.Conv1D(filters=128,kernel_size=6,use_batchnorm=th.use_batchnorm,
-               activation=th.activation,dilation_rate=5), m.mu.Dropout(0.5)]],
-  # [m.mu.Merge.Sum(),m.mu.Dropout(0.5)]],
-  # edges='1;10;011;0001;00011')
-    edges='1;10;011;0001')
+               activation=th.activation,dilation_rate=5), m.mu.Dropout(0.5)],
+  [m.mu.Merge.Sum(),m.mu.Dropout(0.5)]],
+  edges='1;10;011;0001;00011')
   model.add(fm)
   # endregion
   # Add flatten layer
@@ -88,7 +87,7 @@ def main(_):
     th.test_size = 35
   else:
     th.output_dim = 5
-    th.input_shape = [3000, 3]
+    th.input_shape = [3000, 2]
 
   # ---------------------------------------------------------------------------
   # 1. folder/file names and device

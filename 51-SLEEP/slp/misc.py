@@ -152,7 +152,7 @@ class DataProcess(object):
                   'Sleep stage 4':[0,0,0,0,1],}
     sleep_stage_one_hot = []
     sleep_data_aasm = []
-    sleep_eeg = data_person.data_dict['EEG'][:, 1:]
+    sleep_eeg = data_person.data_dict['EEG'][:, 1][:, np.newaxis]
     sleep_eog = data_person.data_dict['EOG'][:, 1][:, np.newaxis]
     sleep_data = np.hstack((sleep_eeg, sleep_eog))
     sleep_stage = data_person.data_dict['stage']
@@ -173,7 +173,7 @@ class DataProcess(object):
       #   sleep_data_aasm.extend(sleep_eeg[index * 3000 + offset:(index+1) * 3000
       #                                                         + offset])
     sleep_data_aasm = np.array(sleep_data_aasm)
-    sleep_data_reshape = sleep_data_aasm.reshape(sleep_data_aasm.shape[0] // 3000, 3000, 3)
+    sleep_data_reshape = sleep_data_aasm.reshape(sleep_data_aasm.shape[0] // 3000, 3000, 2)
     sleep_stage_reshape = np.array(sleep_stage_one_hot).reshape(len(sleep_stage_one_hot) // 5, 5)
 
     # print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
