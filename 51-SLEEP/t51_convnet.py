@@ -114,7 +114,7 @@ def main(_):
   th.batch_size = 32
 
   th.optimizer = 'adam'
-  th.learning_rate = 0.1
+  th.learning_rate = 0.0001
 
   th.train = True
   th.overwrite = True
